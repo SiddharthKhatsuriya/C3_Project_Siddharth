@@ -84,4 +84,17 @@ class RestaurantServiceTest {
         assertEquals(initialNumberOfRestaurants + 1, service.getRestaurants().size());
     }
     //<<<<<<<<<<<<<<<<<<<<ADMIN: ADDING & REMOVING RESTAURANTS>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    //<<<<<<<<<<<<<<<<<<<<System: Getting Total for Items>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    @Test
+    public void getting_cost_for_food_items_in_existing_restaurant_should_return_total_cost() {
+        ArrayList<String> selectedItems = new ArrayList<String>();
+        selectedItems.add("Pao Bhaji");
+        selectedItems.add("masala dosa");
+
+        int totalCost = service.getTotalCostForOrder("Honest Rivera", selectedItems);
+
+        assertEquals(579, totalCost);
+    }
 }

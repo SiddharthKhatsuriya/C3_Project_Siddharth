@@ -89,5 +89,24 @@ class RestaurantTest {
                 () -> restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void total_of_passed_items_must_be_addition_of_individual_items() {
+        ArrayList<String> selectedItems = new ArrayList<String> ();
+        selectedItems.add ("masala dosa");
+        selectedItems.add ("Pao Bhaji");
+
+
+        int totalCost = restaurant.getTotal(selectedItems);
+
+        assertEquals (579, totalCost);
+    }
+
+    @Test
+    public void total_be_0_if_items_no_passed() {
+        ArrayList<String> selectedItems = new ArrayList<String> ();
+        int totalCost = restaurant.getTotal(selectedItems);
+
+        assertEquals (0, totalCost);
+    }
 
 }
