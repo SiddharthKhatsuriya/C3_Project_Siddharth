@@ -30,4 +30,18 @@ public class RestaurantService {
     public List<Restaurant> getRestaurants() {
         return restaurants;
     }
+
+    public int getTotalCostForOrder(String restaurantName, ArrayList<String> menuItems) {
+        int totalOrderCost = 0;
+        Restaurant existingRestaurant = null;
+        try {
+            existingRestaurant = findRestaurantByName(restaurantName);
+            totalOrderCost = existingRestaurant.getTotal(menuItems);
+            return totalOrderCost;
+        } catch (restaurantNotFoundException e) {
+            e.printStackTrace();
+
+        }
+        return -1;
+    }
 }
